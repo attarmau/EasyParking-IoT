@@ -37,3 +37,5 @@ map <- get_map(location = c(lon = 121.05, lat = 25.05),
 ggmap(map)+
   geom_point(aes(x = lng, y = lat), size = 1, col="red",data = area_kao, alpha = 0.6)+
   geom_density2d(data = area_kao, aes(x = lng, y=lat), size = 0.3, geom = "polygon")
+  
+#error參考：https://mlog.club/article/5150943
