@@ -7,6 +7,18 @@ library(ggplot2)
 install.packages("googleway")
 library(googleway)
 
+#畫出地圖範圍的套件
+library(ggmap)
+library(mapproj)
+
+＃如果無法import ggmap，嘗試下列五行程式碼：
+if(!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("dkahle/ggmap", ref = "tidyup", force = TRUE)
+library(ggmap)
+register_google(key="your api key”)
+devtools::install_github("dkahle/ggmap", force = TRUE)
+
+#讀檔
 taxi_on <- data.frame(lat=double(),lng=double())
 
 #請至https://developers.google.com/maps/?hl=zh-tw 取得api key
@@ -19,16 +31,7 @@ for (i in 1:length(taxi_on)) {
 }
 
 #畫出地圖範圍
-library(ggmap)
-library(mapproj)
-
-＃如果無法import ggmap，嘗試下列五行程式碼：
-if(!requireNamespace("devtools")) install.packages("devtools")
-devtools::install_github("dkahle/ggmap", ref = "tidyup", force = TRUE)
-library(ggmap)
-register_google(key="your api key”)
-devtools::install_github("dkahle/ggmap", force = TRUE)
-
+#參考：https://blog.gtwang.org/r/r-ggmap-package-spatial-data-visualization/
 map <- get_map(location = c(lon = 121.05, lat = 25.05),
                zoom = 11, language = "zh-TW")
 ggmap(map)+
