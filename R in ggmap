@@ -22,6 +22,13 @@ for (i in 1:length(taxi_on)) {
 library(ggmap)
 library(mapproj)
 
+＃如果無法import ggmap，嘗試下列五行程式碼：
+if(!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("dkahle/ggmap", ref = "tidyup", force = TRUE)
+library(ggmap)
+register_google(key="AIzaSyDYQwWw86zoR_31XTEanv2Papt8WHuGu40”)
+devtools::install_github("dkahle/ggmap", force = TRUE)
+
 map <- get_map(location = c(lon = 121.05, lat = 25.05),
                zoom = 11, language = "zh-TW")
 ggmap(map)+
