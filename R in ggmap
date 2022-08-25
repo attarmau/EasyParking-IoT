@@ -26,7 +26,7 @@ library(mapproj)
 if(!requireNamespace("devtools")) install.packages("devtools")
 devtools::install_github("dkahle/ggmap", ref = "tidyup", force = TRUE)
 library(ggmap)
-register_google(key="AIzaSyDYQwWw86zoR_31XTEanv2Papt8WHuGu40”)
+register_google(key="your api key”)
 devtools::install_github("dkahle/ggmap", force = TRUE)
 
 map <- get_map(location = c(lon = 121.05, lat = 25.05),
